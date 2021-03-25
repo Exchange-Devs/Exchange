@@ -30,17 +30,21 @@ Exchange will allow college students to post and look for items that other stude
 * User can take a photo, add a description, and list it.
 * User can use a search bar to search for materials.
 * Users can view items that are listed.
-* Detailed view of listed item.
+* Users can view detailed view of listed item.
 * Users can view thier listings.
+* User can request availability of materials.
+* Users can create messages and comunicate within the app.
+* Users can select college that they attend.
+* Users can filter by location, radius, delivery method, and item condition.
 
 **Optional Nice-to-have Stories**
 
 * Show the username and creation time for each post.
-* User can request availability of materials.
 * After the user submits a new listing, show an indeterminate progress bar while being uploaded to Parse.
 * Navigation animations.
-* Messages can be created and viewed within the app.
-* User can edit profile and description(location)etc.
+* Users can edit profile.
+* Users can filter listings.
+* Users can select different payment methods.
 
 ### 2. Screen Archetypes
 
