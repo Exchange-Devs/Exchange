@@ -11,7 +11,6 @@
 Exchange will allow college students to post and look for items that other students have and comunicate what they are willing to exchange.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** Education, E-Commerce.
 - **Mobile:** Uses Camera, Location, and Messaging.
 - **Story:** Allows users to post what they think what someone may want to exchange.
