@@ -29,22 +29,22 @@ Exchange will allow college students to post and look for items that other stude
 * The current signed in user is persisted across app restarts.
 * User can take a photo, add a description, and list it.
 * User can use a search bar to search for materials.
-* Users can view items that are listed.
-* Users can view detailed view of listed item.
-* Users can view thier listings.
+* User can view items that are listed.
+* User can view detailed view of listed item.
+* User can view thier listings.
 * User can request availability of materials.
-* Users can create messages and comunicate within the app.
-* Users can select college that they attend.
-* Users can filter by location, radius, delivery method, and item condition.
+* User can create messages and comunicate within the app.
+* User can select college that they attend.
+* User can filter by location, radius, delivery method, item condition, date listed, and category.
 
 **Optional Nice-to-have Stories**
 
 * Show the username and creation time for each post.
 * After the user submits a new listing, show an indeterminate progress bar while being uploaded to Parse.
 * Navigation animations.
-* Users can edit profile.
-* Users can filter listings.
-* Users can select different payment methods.
+* User can edit profile.
+* User can filter listings.
+* User can select between different payment methods.
 
 ### 2. Screen Archetypes
 
@@ -52,15 +52,19 @@ Exchange will allow college students to post and look for items that other stude
    * User can log in with email and password.
 * Sign Up
     * User can sign up to create a new account using Parse authentication.
+    * User can select college that they attend.
 * Home Screen / Stream
    * User can use a search bar to search for materials.
    * Users can view items that are listed.
+   * User can filter by location, radius, delivery method, item condition, date listed and category.
 * Detail Screen
+   * User can view detailed view of listed item.
    * User can request availability of materials.
 * Compose Screen
    * User can take a photo, add a description, and list it.
 * Profile Screen
    * User can view profile and thier own listings.
+   * User can create messages and comunicate within the app.
 * Profile Detailed Screen
    * User can edit profile and description (location) etc.
 
