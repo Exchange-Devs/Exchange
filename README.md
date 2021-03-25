@@ -31,7 +31,7 @@ Exchange will allow college students to post and look for items that other stude
 * User can use a search bar to search for materials.
 * User can view items that are listed.
 * User can view detailed view of listed item.
-* User can view thier listings.
+* User can view thier own listings.
 * User can request availability of materials.
 * User can create messages and comunicate within the app.
 * User can select college that they attend.
@@ -51,8 +51,8 @@ Exchange will allow college students to post and look for items that other stude
 * Login Screen
    * User can log in with email and password.
 * Sign Up
-    * User can sign up to create a new account using Parse authentication.
-    * User can select college that they attend.
+   * User can sign up to create a new account using Parse authentication.
+   * User can select college that they attend.
 * Home Screen / Stream
    * User can use a search bar to search for materials.
    * Users can view items that are listed.
