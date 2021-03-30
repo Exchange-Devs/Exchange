@@ -96,7 +96,7 @@ Exchange will allow college students to post and look for items that other stude
    * Profile Screen.
 
 ## Wireframes
-<img src="https://github.com/Exchange-Devs/Exchange/blob/main/Exchange.png" width=600>
+<img src= Wireframe.jpg>
 
 ### [BONUS] Digital Wireframes & Mockups
 
