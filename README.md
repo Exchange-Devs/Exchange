@@ -131,7 +131,7 @@ Exchange will allow college students to post and look for items that other stude
       ParseQuery<Listings> query = ParseQuery.getQuery(Listings.class);
             query.include(Listings.KEY_USER);
             query.setLimit(20);
-            query.findInBackground(new FindCallback<Post>() {
+            query.findInBackground(new FindCallback<Listings>() {
                 @Override
                 public void done(List<Listings> lists, ParseException e) {
                     if (e != null) {
