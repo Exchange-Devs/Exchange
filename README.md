@@ -125,6 +125,55 @@ Exchange will allow college students to post and look for items that other stude
 | message   | String          | message sent from user     |
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+- Home Screen
+  - (Read/GET) Query all listings where user is author.
+  ```swift
+      ParseQuery<Listings> query = ParseQuery.getQuery(Listings.class);
+            query.include(Listings.KEY_USER);
+            query.setLimit(20);
+            query.findInBackground(new FindCallback<Post>() {
+                @Override
+                public void done(List<Listings> lists, ParseException e) {
+                    if (e != null) {
+                        Log.e(TAG, "Issue with getting listings", e);
+                        return;
+                    }
+                    for (Listings list : lists) {
+                        Log.i(TAG, "Post " + list.getDescription() + "username: " + list.getUser().getUsername());
+                    }
+
+                    allListings.addAll(lists);
+                    adapter.notifyDataSetChanged();
+                }
+            }); 
+       ```
+- Create listing Screen
+  - (Create/LIST) Create a new list object.
+- Profile Screen
+  - (Update/PUT) Update user profile image
+  - (Read/GET) Query logged in user object
+  ```swift
+      ParseQuery<Listings> query = ParseQuery.getQuery(Listings.class);
+            query.include(Listings.KEY_USER);
+            query.setLimit(limit);
+            query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
+            query.addDescendingOrder(Listings.KEY_CREATED_KEY);
+            query.findInBackground(new FindCallback<Listings>()
+            {
+                @Override
+                public void done(List<Listings> lists, ParseException e)
+                {
+                    if (e != null)
+                    {
+                        Log.e(TAG, "Issue with getting listings", e);
+                        return;
+                    }
+                    for (Listings listings : listings)
+                    {
+                        Log.i(TAG, "Listings: " + listings.getDescription() + ", username: " + listings.getUser().getUsername());
+                    }
+                    allListings.addAll(listings);
+                    adapter.notifyDataSetChanged();
+                }
+            });
+         ```
