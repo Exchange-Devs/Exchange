@@ -102,10 +102,28 @@ Exchange will allow college students to post and look for items that other stude
 
 ### [BONUS] Interactive Prototype
 
-## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+
+#### Listings
+
+| Property  | Type            | Description                     |
+| --------- | --------------- | ------------------------------- |
+| objectId  | String          | unique id for the user listings |
+| author    | Pointer to User | image author                    |
+| image     | File            | image that user posts           |
+| location  | String          | users general location          |
+| createdAt | DateTime        | date when listing is created |
+| exchangeOrSell     | Boolean         | user can choose to either sell or exchange| 
+
+#### Messages
+
+| Property  | Type            | Description                |
+|---------  | --------------- | -------------------------- |
+| messageId | String          | unique id for user message |
+| time      | DateTime        | time message is created    |
+| author    | Pointer to User | message author             |
+| message   | String          | message sent from user     |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
