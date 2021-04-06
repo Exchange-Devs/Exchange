@@ -139,7 +139,7 @@ Exchange will allow college students to post and look for items that other stude
                         return;
                     }
                     for (Listings list : lists) {
-                        Log.i(TAG, "Post " + list.getDescription() + "username: " + list.getUser().getUsername());
+                        Log.i(TAG, "Listings " + list.getDescription() + "username: " + list.getUser().getUsername());
                     }
 
                     allListings.addAll(lists);
