@@ -41,10 +41,9 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Log.i(TAG, "onClick signup button");
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                signUpUser(username, password);
+                Log.i(TAG, "onClick SignUp button");
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+                Toast.makeText(LoginActivity.this, "Signing Up", Toast.LENGTH_SHORT).show();
             }
         });
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -80,31 +79,6 @@ public class LoginActivity extends AppCompatActivity
                 }
             });
         }
-
-        private void signUpUser(String username, String password)
-        {
-            ParseUser newUser = new ParseUser();
-            newUser.setUsername(username);
-            newUser.setPassword(password);
-            newUser.signUpInBackground(new signUpCallback()
-            {
-                @Override
-                public void done(java.text.ParseException e)
-                {
-                    if (e != null)
-                   {
-                        Log.i(TAG, "Issue with signup", e);
-                        Toast.makeText(com.example.exchange.LoginActivity.this, "Issue With Signup", Toast.LENGTH_SHORT).show();
-
-                        return;
-                    }
-                    goMainActivity();
-                    Log.i(TAG, "Success", e);
-                    Toast.makeText(com.example.exchange.LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
-                }
-            });
-      }
-
     private void goMainActivity()
     {
         Intent i = new Intent(this, MainActivity.class);
