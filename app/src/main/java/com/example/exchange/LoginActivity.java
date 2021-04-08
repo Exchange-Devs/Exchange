@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Log.i(TAG, "onClick signu button");
+                Log.i(TAG, "onClick signup button");
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 //signUpUser(username, password);
