@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity
 {
@@ -46,6 +45,7 @@ public class LoginActivity extends AppCompatActivity
                 Toast.makeText(LoginActivity.this, "Signing Up", Toast.LENGTH_SHORT).show();
             }
         });
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
