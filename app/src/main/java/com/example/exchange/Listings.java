@@ -11,9 +11,12 @@ import java.util.Date;
 public class Listings extends ParseObject
 {
     public static final String KEY_DESCRIPTION = "description";
-    public static final String KEY_IMAGE= "image";
+    public static final String KEY_IMAGE= "productImage";
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_KEY = "createdAt";
+    public static final String KEY_UPDATED_KEY = "updatedAt";
+    public static final String KEY_TITLE = "title";
+
 
     public String getDescription()
     {
@@ -24,6 +27,10 @@ public class Listings extends ParseObject
     {
         put(KEY_DESCRIPTION, description);
     }
+
+    public String getTitle() {return getString(KEY_TITLE);}
+
+    public void setTitle(String title) {put(KEY_TITLE, title);}
 
     public ParseFile getImage()
     {
@@ -46,5 +53,7 @@ public class Listings extends ParseObject
     }
 
     public Date getCreatedKeyAt() {return getCreatedAt();}
+
+    public Date getUpdatedKeyAt() {return getUpdatedAt();}
     
 }

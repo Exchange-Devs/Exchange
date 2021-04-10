@@ -57,8 +57,20 @@ public class SignUpActivity extends AppCompatActivity {
 
     private boolean validatePassword()
     {
+        String emailInput = etSignUpEmail.getText().toString().trim();
+        String usernameInput = etSignUpUsername.getText().toString().trim();
         String passwordInput = etSignUpPassword.getText().toString().trim();
         String ConfitmpasswordInput = etSignUpRPPassword.getText().toString().trim();
+        if (emailInput.isEmpty())
+        {
+            Toast.makeText(SignUpActivity.this, "Email cannot be empty", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(usernameInput.isEmpty())
+        {
+            Toast.makeText(SignUpActivity.this, "Username cannot be empty", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         if (passwordInput.isEmpty())
         {
             Toast.makeText(SignUpActivity.this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
