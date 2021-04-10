@@ -29,7 +29,7 @@ import java.util.List;
 public class ListingsFragment extends Fragment
 {
     public static final String TAG = "ListingsFragment";
-    private RecyclerView rvPosts;
+    private RecyclerView rvListings;
     protected ListAdapter adapter;
     protected List<Listings> allPosts;
     private SwipeRefreshLayout swipeContainer;
@@ -53,7 +53,7 @@ public class ListingsFragment extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        rvPosts = view.findViewById(R.id.rvPosts);
+        rvListings = view.findViewById(R.id.rvListings);
         swipeContainer = view.findViewById(R.id.swipeContainer);
         allPosts = new ArrayList<>();
         adapter = new ListAdapter(getContext(), allPosts);
@@ -66,9 +66,9 @@ public class ListingsFragment extends Fragment
                 queryPosts(10,10 * counter++);
             }
         };
-        rvPosts.setAdapter(adapter);
-        rvPosts.setLayoutManager(linearLayoutManager);
-        rvPosts.addOnScrollListener(endlessRecyclerViewScrollListener);
+        rvListings.setAdapter(adapter);
+        rvListings.setLayoutManager(linearLayoutManager);
+        rvListings.addOnScrollListener(endlessRecyclerViewScrollListener);
         queryPosts(10,0);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
