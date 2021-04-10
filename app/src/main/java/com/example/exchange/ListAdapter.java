@@ -66,8 +66,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
         {
             String createdat = list.getCreatedKeyAt().toString();
             String timedifference = TimeFormatter.getTimeDifference(createdat, context);
-            tvCreatedAt.setText(timedifference);
-            tvUsername.setText(list.getUser().getUsername());
+            //tvCreatedAt.setText(timedifference);
+            //tvUsername.setText(list.getUser().getUsername());
             ParseFile image = list.getImage();
             if (image != null)
             {
