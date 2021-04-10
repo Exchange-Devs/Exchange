@@ -1,11 +1,13 @@
 package com.example.exchange;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -19,12 +21,24 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText etSignUpPassword;
     private EditText etSignUpEmail;
     private EditText etSignUpRPPassword;
+    private TextView tvLogin;
     private Button btSignUp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        tvLogin = findViewById(R.id.tvLogin);
+        tvLogin.setPaintFlags(tvLogin.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        tvLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Log.i(TAG, "onClick SignUp Link");
+                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+            }
+        });
 
         etSignUpEmail = findViewById(R.id.etSignUpEmail);
         etSignUpUsername = findViewById(R.id.etSignUpUsername);
