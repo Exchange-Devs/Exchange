@@ -17,6 +17,8 @@ public class SignUpActivity extends AppCompatActivity {
     public static final String TAG = "SignUp Activity";
     private EditText etSignUpUsername;
     private EditText etSignUpPassword;
+    private EditText etSignUpEmail;
+    private EditText etSignUpRPPassword;
     private Button btSignUp;
 
     @Override
@@ -24,27 +26,57 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        etSignUpEmail = findViewById(R.id.etSignUpEmail);
         etSignUpUsername = findViewById(R.id.etSignUpUsername);
         etSignUpPassword = findViewById(R.id.etSignUpPassword);
+        etSignUpRPPassword = findViewById(R.id.etSignUpRPPassword);
         btSignUp = findViewById(R.id.btnSignUp);
         btSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "onClick signup button");
                 Toast.makeText(SignUpActivity.this, "Signing up", Toast.LENGTH_SHORT).show();
-                createUser();
+                validatePassword();
             }
         });
+    }
+
+    private boolean validatePassword()
+    {
+        String passwordInput = etSignUpPassword.getText().toString().trim();
+        String ConfitmpasswordInput = etSignUpRPPassword.getText().toString().trim();
+        if (passwordInput.isEmpty())
+        {
+            Toast.makeText(SignUpActivity.this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (passwordInput.length()<5)
+        {
+            Toast.makeText(SignUpActivity.this, "Password must be at least 5 characters", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!passwordInput.equals(ConfitmpasswordInput))
+        {
+            Toast.makeText(SignUpActivity.this, "Password do not match", Toast.LENGTH_SHORT).show();;
+            return false;
+        }
+        else
+        {
+            createUser();
+            return true;
+        }
     }
 
     private void createUser() {
 
         String  username = etSignUpUsername.getText().toString();
         String password = etSignUpPassword.getText().toString();
+        String email = etSignUpEmail.getText().toString();
 
         ParseUser user = new ParseUser();
         user.setUsername(username);
         user.setPassword(password);
+        user.setEmail(email);
 
         // Other fields can be set just like any other ParseObject,
         // using the "put" method, like this: user.put("attribute", "its value");

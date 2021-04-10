@@ -50,15 +50,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
 
     class ViewHolder extends RecyclerView.ViewHolder
     {
-        private TextView tvUsername, tvCreatedAt;
+        private TextView tvTitle;
         private ImageView ivImage;
         private ImageView ivProfileImage;
 
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            //tvUsername = itemView.findViewById(R.id.tvTitle);
-            ivImage = itemView.findViewById(R.id.ivImage);
+           // tvTitle= itemView.findViewById(R.id.tvTitle);
+          //  ivImage = itemView.findViewById(R.id.ivImage);
             //tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
         }
 
