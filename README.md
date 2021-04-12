@@ -27,15 +27,15 @@ Exchange will allow college students to post and look for items that other stude
 - [x] User can sign up to create a new account using Parse authentication.
 - [x] User can log in and log out of his or her account.
 - [x] The current signed in user is persisted across app restarts.
-* User can take a photo, add a description, and list it.
-* User can use a search bar to search for materials.
-* User can view items that are listed.
-* User can view detailed view of listed item.
-* User can view thier own listings.
-* User can request availability of materials.
-* User can create messages and comunicate within the app.
-* User can select college that they attend.
-* User can filter by location, radius, delivery method, item condition, date listed, and category.
+- [ ] User can take a photo, add a description, and list it.
+- [ ] User can use a search bar to search for materials.
+- [ ] User can view items that are listed.
+- [ ] User can view detailed view of listed item.
+- [ ] User can view thier own listings.
+- [ ] User can request availability of materials.
+- [ ] User can create messages and comunicate within the app.
+- [ ] User can select college that they attend.
+- [ ] User can filter by location, radius, delivery method, item condition, date listed, and category.
 
 **Optional Nice-to-have Stories**
 
