@@ -98,10 +98,6 @@ Exchange will allow college students to post and look for items that other stude
 ## Wireframes
 <img src= "https://github.com/Exchange-Devs/Exchange/blob/main/Exchange.png" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
-
 ### Models
 
 #### Listings
@@ -177,3 +173,11 @@ Exchange will allow college students to post and look for items that other stude
                 }
             });
          ```
+         ## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
