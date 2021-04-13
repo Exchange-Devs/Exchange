@@ -57,8 +57,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
-           // tvTitle= itemView.findViewById(R.id.tvTitle);
-          //  ivImage = itemView.findViewById(R.id.ivImage);
+            tvTitle= itemView.findViewById(R.id.tvTitle);
+            ivImage = itemView.findViewById(R.id.ivImage);
             //tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
         }
 
@@ -67,11 +67,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
             String createdat = list.getCreatedKeyAt().toString();
             String timedifference = TimeFormatter.getTimeDifference(createdat, context);
             //tvCreatedAt.setText(timedifference);
-            //tvUsername.setText(list.getUser().getUsername());
+            tvTitle.setText(list.getTitle());
             ParseFile image = list.getImage();
             if (image != null)
             {
-                //Glide.with(context).load(list.getImage().getUrl()).into(ivImage);
+                Glide.with(context).load(list.getImage().getUrl()).into(ivImage);
             }
             ParseFile file = list.getUser().getParseFile("profileImage");
             if(file != null)
