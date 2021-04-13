@@ -110,4 +110,10 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="157dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/excahnge" />
+
 </FrameLayout>
