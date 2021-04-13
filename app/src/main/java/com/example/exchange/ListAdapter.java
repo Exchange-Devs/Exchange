@@ -71,13 +71,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
             ParseFile image = list.getImage();
             if (image != null)
             {
-                Glide.with(context).load(list.getImage().getUrl()).into(ivImage);
+                //Glide.with(context).load(list.getImage().getUrl()).into(ivImage);
             }
             ParseFile file = list.getUser().getParseFile("profileImage");
             if(file != null)
             {
                 String path = file.getUrl();
-                Glide.with(context).load(path).transform(new CircleCrop()).into(ivProfileImage);
+                //Glide.with(context).load(path).transform(new CircleCrop()).into(ivProfileImage);
             }
         }
     }
