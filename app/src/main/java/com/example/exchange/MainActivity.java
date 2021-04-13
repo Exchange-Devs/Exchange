@@ -10,12 +10,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.exchange.fragments.ListingsFragment;
 import com.example.exchange.fragments.MyListingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.parse.ParseFile;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -48,7 +45,7 @@ public class MainActivity extends AppCompatActivity
                         Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
                         fragment = new ListingsFragment();
                         break;
-                    case R.id.action_profile:
+                    case R.id.action_listings:
                     default:
                         Toast.makeText(MainActivity.this, "My Listings", Toast.LENGTH_SHORT).show();
                         fragment = new MyListingsFragment();

@@ -15,12 +15,12 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/action_compose"
-        android:icon="@android:drawable/btn_dialog"
-        android:title="Compose"
+        android:icon="@drawable/ic_baseline_mail_outline_24"
+        android:title="Messages"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_profile"
-        android:icon="@drawable/ic_baseline_text_snippet_24"
+        android:id="@+id/action_listings"
+        android:icon="@drawable/ic_outline_text_snippet_24"
         android:title="My Listings"
         app:showAsAction="always" />
 </menu>
