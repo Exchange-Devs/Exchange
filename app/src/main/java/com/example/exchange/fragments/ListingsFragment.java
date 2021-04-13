@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -57,8 +58,8 @@ public class ListingsFragment extends Fragment
         swipeContainer = view.findViewById(R.id.swipeContainer);
         allListings = new ArrayList<>();
         adapter = new ListAdapter(getContext(), allListings);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        endlessRecyclerViewScrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager)
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        endlessRecyclerViewScrollListener = new EndlessRecyclerViewScrollListener(gridLayoutManager)
         {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view)
@@ -67,7 +68,7 @@ public class ListingsFragment extends Fragment
             }
         };
         rvListings.setAdapter(adapter);
-        rvListings.setLayoutManager(linearLayoutManager);
+        rvListings.setLayoutManager(gridLayoutManager);
         rvListings.addOnScrollListener(endlessRecyclerViewScrollListener);
         queryPosts(10,0);
 
