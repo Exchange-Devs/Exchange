@@ -77,7 +77,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
             if(file != null)
             {
                 String path = file.getUrl();
-                //Glide.with(context).load(path).transform(new CircleCrop()).into(ivProfileImage);
+                Glide.with(context).load(path).transform(new CircleCrop()).into(ivProfileImage);
             }
         }
     }

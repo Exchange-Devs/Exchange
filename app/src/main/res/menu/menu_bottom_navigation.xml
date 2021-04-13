@@ -4,8 +4,14 @@
 
     <item
         android:id="@+id/action_home"
-        android:icon="@android:drawable/btn_star_big_on"
+        android:icon="@drawable/ic_outline_home_24"
         android:title="Home"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_compose"
@@ -14,7 +20,7 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/action_profile"
-        android:icon="@android:drawable/checkbox_on_background"
-        android:title="Profile"
+        android:icon="@drawable/ic_baseline_text_snippet_24"
+        android:title="My Listings"
         app:showAsAction="always" />
 </menu>
