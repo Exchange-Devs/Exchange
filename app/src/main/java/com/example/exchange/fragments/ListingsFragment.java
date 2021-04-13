@@ -31,7 +31,7 @@ public class ListingsFragment extends Fragment
     public static final String TAG = "ListingsFragment";
     private RecyclerView rvListings;
     protected ListAdapter adapter;
-    protected List<Listings> allPosts;
+    protected List<Listings> allListings;
     private SwipeRefreshLayout swipeContainer;
     private EndlessRecyclerViewScrollListener endlessRecyclerViewScrollListener;
     int counter = 1;
@@ -55,8 +55,8 @@ public class ListingsFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
         rvListings = view.findViewById(R.id.rvListings);
         swipeContainer = view.findViewById(R.id.swipeContainer);
-        allPosts = new ArrayList<>();
-        adapter = new ListAdapter(getContext(), allPosts);
+        allListings = new ArrayList<>();
+        adapter = new ListAdapter(getContext(), allListings);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         endlessRecyclerViewScrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager)
         {
@@ -126,9 +126,9 @@ public class ListingsFragment extends Fragment
                 }
                 if (skip <= 0)
                 {
-                    allPosts.clear();
+                    allListings.clear();
                 }
-                allPosts.addAll(listings);
+                allListings.addAll(listings);
                 adapter.notifyDataSetChanged();
             }
         });
