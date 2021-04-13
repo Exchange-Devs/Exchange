@@ -29,7 +29,7 @@ Exchange will allow college students to post and look for items that other stude
 - [x] The current signed in user is persisted across app restarts.
 - [ ] User can take a photo, add a description, and list it.
 - [ ] User can use a search bar to search for materials.
-- [ ] User can view items that are listed.
+- [x] User can view items that are listed.
 - [ ] User can view detailed view of listed item.
 - [ ] User can view thier own listings.
 - [ ] User can request availability of materials.
