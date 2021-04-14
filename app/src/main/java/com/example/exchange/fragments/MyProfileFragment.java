@@ -1,11 +1,13 @@
 package com.example.exchange.fragments;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,10 +20,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.example.exchange.EditProfileActivity;
 import com.example.exchange.EndlessRecyclerViewScrollListener;
 import com.example.exchange.ListAdapter;
 import com.example.exchange.Listings;
+import com.example.exchange.LoginActivity;
 import com.example.exchange.R;
+import com.example.exchange.SignUpActivity;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -39,6 +44,7 @@ public class MyProfileFragment extends Fragment
     protected List<Listings> allListings;
     private TextView tvVisibility;
     private ImageView ivProfileImage;
+    private Button btnEditProfile;
     private SwipeRefreshLayout swipeContainer;
     private EndlessRecyclerViewScrollListener endlessRecyclerViewScrollListener;
     int counter = 1;
@@ -57,6 +63,18 @@ public class MyProfileFragment extends Fragment
         swipeContainer = view.findViewById(R.id.swipeContainer);
         ivProfileImage = view.findViewById(R.id.ivProfileImage);
         tvVisibility = view.findViewById(R.id.tvVisibility);
+        btnEditProfile = view.findViewById(R.id.btnEditProfile);
+
+        btnEditProfile.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent i = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(i);
+            }
+        });
+
         allListings = new ArrayList<>();
         adapter = new ListAdapter(getContext(), allListings);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
