@@ -52,7 +52,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
     {
         private TextView tvTitle;
         private ImageView ivImage;
-        private ImageView ivProfileImage;
+
 
         public ViewHolder(@NonNull View itemView)
         {
@@ -72,12 +72,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
             if (image != null)
             {
                 Glide.with(context).load(list.getImage().getUrl()).into(ivImage);
-            }
-            ParseFile file = list.getUser().getParseFile("profileImage");
-            if(file != null)
-            {
-                String path = file.getUrl();
-                Glide.with(context).load(path).transform(new CircleCrop()).into(ivProfileImage);
             }
         }
     }

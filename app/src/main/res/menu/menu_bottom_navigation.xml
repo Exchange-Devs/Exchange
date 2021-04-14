@@ -14,13 +14,13 @@
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_compose"
+        android:id="@+id/action_message"
         android:icon="@drawable/ic_baseline_mail_outline_24"
         android:title="Messages"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_listings"
-        android:icon="@drawable/ic_outline_text_snippet_24"
-        android:title="My Listings"
+        android:id="@+id/action_profile"
+        android:icon="@drawable/ic_baseline_person_outline_24"
+        android:title="My Profile"
         app:showAsAction="always" />
 </menu>
