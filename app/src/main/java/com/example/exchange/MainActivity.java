@@ -36,16 +36,7 @@ public class MainActivity extends AppCompatActivity
         toolbar = findViewById(R.id.toolbar);
         ivProfileImage = findViewById(R.id.ivProfileImage);
 
-        ParseFile file =  ParseUser.getCurrentUser().getParseFile("profileImage");
-        if(file != null)
-        {
-            String path = file.getUrl();
-            Glide.with(this).load(path).transform(new CircleCrop()).into(ivProfileImage);
-        }
-        else
-        {
-            Glide.with(this).load(R.drawable.ic_baseline_tag_faces_24).transform(new CircleCrop()).into(ivProfileImage);
-        }
+        loadImage();
 
         bottomNavigation = findViewById(R.id.bottomNavigation);
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -77,5 +68,25 @@ public class MainActivity extends AppCompatActivity
         });
         // Set default selection
         bottomNavigation.setSelectedItemId(R.id.action_home);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        loadImage();
+    }
+
+    private void loadImage()
+    {
+        ivProfileImage.setImageDrawable(null);
+        ParseFile file = ParseUser.getCurrentUser().getParseFile("profileImage");
+        if (file != null) {
+            String path = file.getUrl();
+            Glide.with(this).load(path).transform(new CircleCrop()).into(ivProfileImage);
+        } else {
+            Glide.with(this).load(R.drawable.profile_pic).transform(new CircleCrop()).into(ivProfileImage);
+        }
     }
 }

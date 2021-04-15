@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#000000"
+    android:clickable="true"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="361dp"
@@ -15,6 +18,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
         android:background="#000000"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical">
 
         <ImageView
@@ -27,58 +32,98 @@
             app:layout_constraintHorizontal_bias="0.498"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <Button
-            android:id="@+id/btnCaptureImage"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clCapture"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="16dp"
-            android:background="#615F5F"
-            android:text="Button" />
+            android:layout_height="53dp"
+            android:layout_gravity="center">
 
-        <EditText
-            android:id="@+id/etEditUsername"
+            <Button
+                android:id="@+id/Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#615F5F"
+                android:clickable="false"
+                android:focusable="false"
+                android:src="@android:drawable/ic_menu_camera"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Button"
+                app:layout_constraintEnd_toEndOf="@+id/Button"
+                app:layout_constraintStart_toStartOf="@+id/Button"
+                app:layout_constraintTop_toTopOf="@+id/Button"
+                app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:hint="Edit Username"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:textColorHint="#878585"
+            app:hintTextColor="#FFFFFF">
 
-        <EditText
-            android:id="@+id/etEdiPassword"
+            <EditText
+                android:id="@+id/etEditUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:hint="Edit Username"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#504E4E" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:hint="Change Password"
-            android:inputType="textPassword"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:textColorHint="#878585"
+            app:hintTextColor="#FFFFFF">
 
-        <EditText
-            android:id="@+id/etSignUpRPPassword"
+            <EditText
+                android:id="@+id/etEdiPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:hint="Change Password"
+                android:inputType="textPassword"
+                android:textColor="#FFFFFF" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:hint="Repeat Password"
-            android:inputType="textPassword"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:textColorHint="#878585"
+            app:hintTextColor="#FFFFFF">
+
+            <EditText
+                android:id="@+id/etRPPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:hint="Repeat Password"
+                android:inputType="textPassword"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnSubmit"
@@ -91,7 +136,7 @@
             android:text="Save Changes" />
 
         <Button
-            android:id="@+id/btnSubmit2"
+            android:id="@+id/btnSignOut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

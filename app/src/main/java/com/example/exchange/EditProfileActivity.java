@@ -9,12 +9,15 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
 
 import com.bumptech.glide.Glide;
@@ -31,29 +34,54 @@ public class EditProfileActivity extends AppCompatActivity
     public static final String TAG = "ProfileActivity";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 40;
     private File photoFile;
-    public String photoFileName = "profile.jpg";
-    public Button btnCaptureImage;
-    public ImageView ivProfileImage2;
-    public ParseUser user;
-    public Button btnSubmit;
+    private String photoFileName = "profile.jpg";
+    private ConstraintLayout clCapture;
+    private ImageView ivProfileImage2;
+    private ParseUser user;
+    private Button btnSubmit, btnSignOut;
+    private EditText etEditUsername, etEdiPassword, etRPPassword;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprofile);
-        btnCaptureImage = findViewById(R.id.btnCaptureImage);
+        user = ParseUser.getCurrentUser();
+        clCapture = findViewById(R.id.clCapture);
         ivProfileImage2 = findViewById(R.id.ivProfileImage2);
         btnSubmit = findViewById(R.id.btnSubmit);
-        user = ParseUser.getCurrentUser();
+        btnSignOut = findViewById(R.id.btnSignOut);
+        etEdiPassword = findViewById(R.id.etEdiPassword);
+        etEditUsername = findViewById(R.id.etEditUsername);
+        etRPPassword = findViewById(R.id.etRPPassword);
+
+        etEditUsername.setText(user.getUsername());
         ParseFile file = user.getParseFile("profileImage");
         if(file != null)
         {
             String path = file.getUrl();
             Glide.with(this).load(path).transform(new CircleCrop()).into(ivProfileImage2);
         }
+        else
+        {
+            Glide.with(this).load(R.drawable.profile_pic).transform(new CircleCrop()).into(ivProfileImage2);
+        }
 
         btnSubmit.setEnabled(false);
+
+        clCapture.setOnClickListener(v -> {
+            launchCamera();
+        });
+
+
+        btnSignOut.setOnClickListener(v -> {
+            ParseUser.logOutInBackground();
+            Intent intent = new Intent(EditProfileActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        });
 
         btnSubmit.setOnClickListener(new View.OnClickListener()
         {
@@ -76,15 +104,26 @@ public class EditProfileActivity extends AppCompatActivity
                 });
             }
         });
-
-        btnCaptureImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
+        etEditUsername.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus)
             {
-                launchCamera();
+                noFocus(v);
+            }
+        });
+        etEdiPassword.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus)
+            {
+                noFocus(v);
+            }
+        });
+        etRPPassword.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus)
+            {
+                noFocus(v);
             }
         });
     }
+
     private void launchCamera()
     {
         // create Intent to take a picture and return control to the calling application
@@ -139,5 +178,11 @@ public class EditProfileActivity extends AppCompatActivity
 
         // Return the file target for the photo based on filename
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
+    }
+
+    public void noFocus(View view)
+    {
+        InputMethodManager ip = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        ip.hideSoftInputFromWindow(view.getWindowToken(),0);
     }
 }

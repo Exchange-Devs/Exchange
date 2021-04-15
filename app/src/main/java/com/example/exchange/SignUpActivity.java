@@ -1,7 +1,10 @@
 package com.example.exchange;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,8 +15,15 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 
+import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
+
+import java.io.ByteArrayOutputStream;
 
 public class SignUpActivity extends AppCompatActivity {
     public static final String TAG = "SignUp Activity";
@@ -107,19 +117,18 @@ public class SignUpActivity extends AppCompatActivity {
         // Other fields can be set just like any other ParseObject,
         // using the "put" method, like this: user.put("attribute", "its value");
         // If this field does not exists, it will be automatically created
-
         user.signUpInBackground(e ->
         {
             if (e == null) {
                 // Hooray! Let them use the app now.
-                Intent intent = new Intent (this, MainActivity.class);
+                Intent intent = new Intent (SignUpActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             } else {
                 // Sign up didn't succeed. Look at the ParseException
                 // to figure out what went wrong
                 Log.e(TAG,"issues signing up",e);
-                Toast.makeText(this, "failed to signUp", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "failed to signUp", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -24,9 +24,7 @@ import com.example.exchange.EditProfileActivity;
 import com.example.exchange.EndlessRecyclerViewScrollListener;
 import com.example.exchange.ListAdapter;
 import com.example.exchange.Listings;
-import com.example.exchange.LoginActivity;
 import com.example.exchange.R;
-import com.example.exchange.SignUpActivity;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -121,14 +119,17 @@ public class MyProfileFragment extends Fragment
         }
         else
         {
-            Glide.with(this).load(R.drawable.ic_baseline_tag_faces_24).transform(new CircleCrop()).into(ivProfileImage);
+            Glide.with(this).load(R.drawable.profile_pic).transform(new CircleCrop()).into(ivProfileImage);
         }
+        loadImage();
     }
+
 
     @Override
     public void onResume()
     {
         super.onResume();
+        loadImage();
         queryPosts(10, 0);
         adapter.notifyDataSetChanged();
     }
@@ -164,5 +165,19 @@ public class MyProfileFragment extends Fragment
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+    private void loadImage()
+    {
+        ivProfileImage.setImageDrawable(null);
+        ParseFile file = ParseUser.getCurrentUser().getParseFile("profileImage");
+        if(file != null)
+        {
+            String path = file.getUrl();
+            Glide.with(getActivity()).load(path).transform(new CircleCrop()).into(ivProfileImage);
+        }
+        else
+        {
+            Glide.with(getActivity()).load(R.drawable.profile_pic).transform(new CircleCrop()).into(ivProfileImage);
+        }
     }
 }
