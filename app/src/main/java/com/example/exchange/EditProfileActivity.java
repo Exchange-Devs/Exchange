@@ -22,6 +22,7 @@ import androidx.core.content.FileProvider;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.example.exchange.fragments.MyProfileFragment;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -36,7 +37,7 @@ public class EditProfileActivity extends AppCompatActivity
     private File photoFile;
     private String photoFileName = "profile.jpg";
     private ConstraintLayout clCapture;
-    private ImageView ivProfileImage2;
+    private ImageView ivProfileImage2, ivBackButton;
     private ParseUser user;
     private Button btnSubmit, btnSignOut;
     private EditText etEditUsername, etEdiPassword, etRPPassword;
@@ -52,6 +53,7 @@ public class EditProfileActivity extends AppCompatActivity
         ivProfileImage2 = findViewById(R.id.ivProfileImage2);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSignOut = findViewById(R.id.btnSignOut);
+        ivBackButton =findViewById(R.id.ivBackButton);
         etEdiPassword = findViewById(R.id.etEdiPassword);
         etEditUsername = findViewById(R.id.etEditUsername);
         etRPPassword = findViewById(R.id.etRPPassword);
@@ -120,6 +122,14 @@ public class EditProfileActivity extends AppCompatActivity
             if (!hasFocus)
             {
                 noFocus(v);
+            }
+        });
+        ivBackButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                finish();
             }
         });
     }
