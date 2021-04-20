@@ -31,20 +31,20 @@ Exchange will allow college students to post and look for items that other stude
 - [ ] User can use a search bar to search for materials.
 - [x] User can view items that are listed.
 - [ ] User can view detailed view of listed item.
-- [ ] User can view thier own listings.
+- [x] User can view thier own listings.
 - [ ] User can request availability of materials.
-- [ ] User can create messages and comunicate within the app.
+- [ ] User can create messages and communicate within the app.
 - [ ] User can select college that they attend.
 - [ ] User can filter by location, radius, delivery method, item condition, date listed, and category.
 
 **Optional Nice-to-have Stories**
 
-* Show the username and creation time for each post.
-* After the user submits a new listing, show an indeterminate progress bar while being uploaded to Parse.
-* Navigation animations.
-* User can edit profile.
-* User can filter listings.
-* User can select between different payment methods.
+- [ ] Show the username and creation time for each post.
+- [ ] After the user submits a new listing, show an indeterminate progress bar while being uploaded to Parse.
+- [ ] Navigation animations.
+- [ ] User can edit profile.
+- [ ] User can filter listings.
+- [ ] User can select between different payment methods if needed.
 
 ### 2. Screen Archetypes
 
@@ -178,6 +178,8 @@ Exchange will allow college students to post and look for items that other stude
 Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/Exchange-Devs/Exchange/blob/main/Exchange%231.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+<img src='https://github.com/Exchange-Devs/Exchange/blob/main/Exchange%232.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
