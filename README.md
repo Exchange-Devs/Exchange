@@ -33,7 +33,7 @@ Exchange will allow college students to post and look for items that other stude
 - [ ] User can view detailed view of listed item.
 - [x] User can view thier own listings.
 - [ ] User can request availability of materials.
-- [ ] User can create messages and comunicate within the app.
+- [ ] User can create messages and communicate within the app.
 - [ ] User can select college that they attend.
 - [ ] User can filter by location, radius, delivery method, item condition, date listed, and category.
 
