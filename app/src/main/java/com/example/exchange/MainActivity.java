@@ -1,7 +1,10 @@
 package com.example.exchange;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity
     private BottomNavigationView bottomNavigation;
     private Toolbar toolbar;
     private ImageView ivProfileImage;
+    private ImageButton btnComposeBtn;
 
 
     @Override
@@ -34,6 +38,16 @@ public class MainActivity extends AppCompatActivity
 
         toolbar = findViewById(R.id.toolbar);
         ivProfileImage = findViewById(R.id.ivProfileImage);
+        btnComposeBtn = findViewById(R.id.btnComposeBtn);
+
+        btnComposeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ComposeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         loadImage();
 

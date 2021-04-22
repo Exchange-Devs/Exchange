@@ -32,7 +32,7 @@ import java.io.File;
 
 public class EditProfileActivity extends AppCompatActivity
 {
-    public static final String TAG = "ProfileActivity";
+    public static final String TAG = "EditProfileActivity";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 40;
     private File photoFile;
     private String photoFileName = "profile.jpg";
