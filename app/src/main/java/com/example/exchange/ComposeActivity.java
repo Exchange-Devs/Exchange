@@ -34,7 +34,7 @@ public class ComposeActivity extends AppCompatActivity
     private EditText etDescription;
     private ImageView ivBackButtonB;
     private ConstraintLayout clCapture2;
-    private Button btnSubmit;
+    private Button  btnSubmit;
     private ImageView ivPostImage;
     private ProgressBar progressBar;
     private File photoFile;
