@@ -16,6 +16,9 @@ public class Listings extends ParseObject
     public static final String KEY_CREATED_KEY = "createdAt";
     public static final String KEY_UPDATED_KEY = "updatedAt";
     public static final String KEY_TITLE = "title";
+    public static final String KEY_PRICE = "price";
+    public static final String KEY_CONDITION = "condition";
+    public static final String KEY_CATEGORY = "category";
 
 
     public String getDescription()
@@ -51,6 +54,18 @@ public class Listings extends ParseObject
     {
         put(KEY_USER, user);
     }
+
+    public String getPrice() {return getString(KEY_PRICE); }
+
+    public void setPrice(int price) {put(KEY_PRICE, price);}
+
+    public String getCondition() {return getString(KEY_CONDITION);}
+
+    public void setConditioon(String conditioon) {put(KEY_CONDITION,conditioon);}
+
+   public String getCategory() {return getString(KEY_CATEGORY);}
+
+   public void setCategory(String category) {put(KEY_CATEGORY,category);}
 
     public Date getCreatedKeyAt() {return getCreatedAt();}
 

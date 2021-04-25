@@ -7,12 +7,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -20,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -31,14 +37,17 @@ public class ComposeActivity extends AppCompatActivity
 {
     public static final String TAG = "ComposeActivity";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
-    private EditText etDescription;
+    private EditText etDescription, etPrice, etTitle;
     private ImageView ivBackButtonB;
     private ConstraintLayout clCapture2;
     private Button btnSubmit;
     private ImageView ivPostImage;
     private ProgressBar progressBar;
+    private RadioButton rbSell, rbExchange;
     private File photoFile;
     public String photoFileName = "photo.jpg";
+    private AutoCompleteTextView actvCondition, actvCategory;
+    private TextInputLayout tilPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,6 +58,141 @@ public class ComposeActivity extends AppCompatActivity
         ivBackButtonB = findViewById(R.id.ivBackButtonB);
         clCapture2 = findViewById(R.id.clCapture2);
         ivPostImage = findViewById(R.id.ivPostImage);
+        actvCondition = findViewById(R.id.actvCondition);
+        actvCategory = findViewById(R.id.actvCategory);
+        etPrice = findViewById(R.id.etPrice);
+        rbSell = findViewById(R.id.rbSell);
+        rbExchange = findViewById(R.id.rbExchange);
+        tilPrice = findViewById(R.id.tilPrice);
+        btnSubmit = findViewById(R.id.btnSubmit);
+        etTitle = findViewById(R.id.etTitle);
+        //progressBar = findViewById(R.id.progressBar);
+
+        tilPrice.setVisibility(View.GONE);
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this, android.R.layout.select_dialog_item, getResources().getStringArray(R.array.condition));
+
+        ArrayAdapter<String> adapt = new ArrayAdapter<String>
+                (this, android.R.layout.select_dialog_item, getResources().getStringArray(R.array.category));
+
+        actvCondition.setThreshold(0);
+        actvCondition.setAdapter(adapter);
+        actvCondition.setInputType(0);
+
+        actvCategory.setThreshold(0);
+        actvCategory.setAdapter(adapt);
+        actvCategory.setInputType(0);
+
+        actvCondition.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus)
+                    actvCondition.showDropDown();
+            }
+        });
+
+        actvCategory.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus)
+                    actvCategory.showDropDown();
+            }
+        });
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                String description = etDescription.getText().toString();
+                String title = etTitle.getText().toString();
+                int price = 0;
+                if(!etPrice.getText().toString().equals("") && etPrice.getVisibility() == View.VISIBLE)
+                {
+                    price = Integer.parseInt(etPrice.getText().toString().substring(0,0) + etPrice.getText().toString().substring(1));
+                }
+
+                String condition = actvCondition.getText().toString();
+                String category = actvCategory.getText().toString();
+                if (title.isEmpty())
+                {
+                    etTitle.setError("Title cannot be empty");
+                    return;
+                }
+
+                if(etPrice.getText().toString().isEmpty())
+                {
+                    etPrice.setError("Price cannot be empty");
+                    return;
+                }
+
+                if (category.isEmpty())
+                {
+                    actvCondition.setError("Category cannot be empty");
+                    return;
+                }
+                if (condition.isEmpty())
+                {
+                    actvCondition.setError("Condition cannot be empty");
+                    return;
+                }
+                if (description.isEmpty())
+                {
+                    etDescription.setError("Description cannot be empty");
+                    return;
+                }
+
+                if (photoFile == null || ivPostImage.getDrawable() == null)
+                {
+                    Toast.makeText(ComposeActivity.this, "There is no Image!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                savePost(description,title,price,condition,category,currentUser,photoFile);
+            }
+        });
+
+        rbSell.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                tilPrice.setVisibility(View.VISIBLE);
+            }
+        });
+
+        rbExchange.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                tilPrice.setVisibility(View.GONE);
+                etPrice.setText("0");
+            }
+        });
+
+        etPrice.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                if (etPrice.getText().toString().startsWith("$"))
+                    return;
+                etPrice.setTextKeepState("$" + etPrice.getText().toString());
+                etPrice.setSelection(etPrice.getText().length());
+            }
+        });
+
 
         clCapture2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,10 +269,14 @@ public class ComposeActivity extends AppCompatActivity
         // Return the file target for the photo based on filename
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
-    private void savePost(String description, ParseUser currentUser, File photoFile)
+    private void savePost(String description, String title, int price, String condition, String category, ParseUser currentUser, File photoFile)
     {
         Listings listings = new Listings();
         listings.setDescription(description);
+        listings.setTitle(title);
+        listings.setPrice(price);
+        listings.setConditioon(condition);
+        listings.setCategory(category);
         listings.setImage(new ParseFile(photoFile));
         listings.setUser(currentUser);
         listings.saveInBackground(new SaveCallback()
@@ -143,8 +291,12 @@ public class ComposeActivity extends AppCompatActivity
                     Toast.makeText(ComposeActivity.this, "Error while saving!", Toast.LENGTH_SHORT).show();
                 }
                 Log.i(TAG, "Post save was successful!!!");
-                progressBar.setVisibility(View.GONE);
+                //progressBar.setVisibility(View.GONE);
                 etDescription.setText("");
+                etTitle.setText("");
+                etPrice.setText("");
+                actvCategory.setText("");
+                actvCondition.setText("");
                 ivPostImage.setImageResource(0);
             }
         });

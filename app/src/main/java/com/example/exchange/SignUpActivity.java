@@ -1,10 +1,7 @@
 package com.example.exchange;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,15 +12,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 
-import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
-
-import java.io.ByteArrayOutputStream;
 
 public class SignUpActivity extends AppCompatActivity {
     public static final String TAG = "SignUp Activity";
@@ -60,12 +50,12 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i(TAG, "onClick signup button");
                 Toast.makeText(SignUpActivity.this, "Signing up", Toast.LENGTH_SHORT).show();
-                validatePassword();
+                validate();
             }
         });
     }
 
-    private boolean validatePassword()
+    private boolean validate()
     {
         String emailInput = etSignUpEmail.getText().toString().trim();
         String usernameInput = etSignUpUsername.getText().toString().trim();
@@ -103,8 +93,8 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    private void createUser() {
-
+    private void createUser()
+    {
         String  username = etSignUpUsername.getText().toString();
         String password = etSignUpPassword.getText().toString();
         String email = etSignUpEmail.getText().toString();

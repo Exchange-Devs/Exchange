@@ -70,7 +70,7 @@ public class EditProfileActivity extends AppCompatActivity
             Glide.with(this).load(R.drawable.profile_pic).transform(new CircleCrop()).into(ivProfileImage2);
         }
 
-        btnSubmit.setEnabled(false);
+        btnSubmit.setEnabled(true);
 
         clCapture.setOnClickListener(v -> {
             launchCamera();
@@ -90,20 +90,33 @@ public class EditProfileActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                ParseFile pic = new ParseFile(photoFile);
-                user.put("profileImage", pic);
-                user.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e)
-                    {
-                        if(e != null)
-                        {
-                            Log.e(TAG, "Issue saving profile image", e);
-                        }
-                        Toast.makeText(EditProfileActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                });
+                if (photoFile != null) {
+                    ParseFile pic = new ParseFile(photoFile);
+                    user.put("profileImage", pic);
+                }
+
+                if(!etEditUsername.getText().toString().equals(""))
+                {
+                    Log.e(TAG, "Issue");
+                    user.setUsername(etEditUsername.getText().toString());
+                }
+
+                if (validate() && !etEdiPassword.getText().toString().isEmpty())
+                {
+                    Log.e(TAG, "Issue2");
+                    user.setPassword(etEdiPassword.getText().toString());
+                }
+               if (etEdiPassword.getText().toString().isEmpty() || (!etEdiPassword.getText().toString().isEmpty() && validate())) {
+                   user.saveInBackground(new SaveCallback() {
+                       @Override
+                       public void done(ParseException e) {
+                           if (e != null) {
+                               Log.e(TAG, "Issue saving profile image", e);
+                           }
+                           finish();
+                       }
+                   });
+               }
             }
         });
         etEditUsername.setOnFocusChangeListener((v, hasFocus) -> {
@@ -144,7 +157,7 @@ public class EditProfileActivity extends AppCompatActivity
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(this, "com.codepath.fileprovider", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(this, "com.exchange.fileprovider", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
@@ -166,7 +179,6 @@ public class EditProfileActivity extends AppCompatActivity
                 // RESIZE BITMAP, see section below
                 // Load the taken image into a preview
                 Glide.with(this).load(takenImage).transform(new CircleCrop()).into(ivProfileImage2);
-                btnSubmit.setEnabled(true);
                Log.i(TAG, "Loaded Image");
             } else { // Result was a failure
                 Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
@@ -194,5 +206,23 @@ public class EditProfileActivity extends AppCompatActivity
     {
         InputMethodManager ip = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         ip.hideSoftInputFromWindow(view.getWindowToken(),0);
+    }
+
+    private boolean validate()
+    {
+        String passwordInput = etEdiPassword.getText().toString();
+        String ConfitmpasswordInput = etRPPassword.getText().toString();
+
+            if (passwordInput.length()> 0 && passwordInput.length()<5)
+            {
+                Toast.makeText(EditProfileActivity.this, "Password must be at least 5 characters", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            if (!passwordInput.equals(ConfitmpasswordInput))
+            {
+                Toast.makeText(EditProfileActivity.this, "Password do not match", Toast.LENGTH_SHORT).show();;
+                return false;
+            }
+            return true;
     }
 }
