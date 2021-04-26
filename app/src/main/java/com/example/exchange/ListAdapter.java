@@ -50,7 +50,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
 
     class ViewHolder extends RecyclerView.ViewHolder
     {
-        private TextView tvTitle;
+        private TextView tvTitle, tvPrice;
         private ImageView ivImage;
 
 
@@ -59,6 +59,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
             super(itemView);
             tvTitle= itemView.findViewById(R.id.tvTitle);
             ivImage = itemView.findViewById(R.id.ivImage);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
             //tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
         }
 
@@ -68,6 +69,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
             String timedifference = TimeFormatter.getTimeDifference(createdat, context);
             //tvCreatedAt.setText(timedifference);
             tvTitle.setText(list.getTitle());
+            tvPrice.setText(String.format("$%s",list.getPrice() + " "));
+
             ParseFile image = list.getImage();
             if (image != null)
             {

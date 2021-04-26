@@ -55,7 +55,7 @@ public class Listings extends ParseObject
         put(KEY_USER, user);
     }
 
-    public String getPrice() {return getString(KEY_PRICE); }
+    public int getPrice() {return getInt(KEY_PRICE); }
 
     public void setPrice(int price) {put(KEY_PRICE, price);}
 
