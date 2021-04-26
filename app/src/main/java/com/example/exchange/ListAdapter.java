@@ -69,7 +69,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
             String timedifference = TimeFormatter.getTimeDifference(createdat, context);
             //tvCreatedAt.setText(timedifference);
             tvTitle.setText(list.getTitle());
-            tvPrice.setText(String.format("$%s", +list.getPrice() + " · "));
+            tvPrice.setText(String.format("$%s",list.getPrice() + " · "));
 
             ParseFile image = list.getImage();
             if (image != null)
