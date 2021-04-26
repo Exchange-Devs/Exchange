@@ -27,7 +27,7 @@ Exchange will allow college students to post and look for items that other stude
 - [x] User can sign up to create a new account using Parse authentication.
 - [x] User can log in and log out of his or her account.
 - [x] The current signed in user is persisted across app restarts.
-- [ ] User can take a photo, add a description, and list it.
+- [x] User can take a photo, add a description, and list it.
 - [ ] User can use a search bar to search for materials.
 - [x] User can view items that are listed.
 - [ ] User can view detailed view of listed item.
@@ -42,7 +42,7 @@ Exchange will allow college students to post and look for items that other stude
 - [ ] Show the username and creation time for each post.
 - [ ] After the user submits a new listing, show an indeterminate progress bar while being uploaded to Parse.
 - [ ] Navigation animations.
-- [ ] User can edit profile.
+- [x] User can edit profile.
 - [ ] User can filter listings.
 - [ ] User can select between different payment methods if needed.
 
