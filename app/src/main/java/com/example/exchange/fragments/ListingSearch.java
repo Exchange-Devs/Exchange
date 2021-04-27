@@ -75,7 +75,7 @@ public class ListingSearch extends Fragment {
             @Override
             // https://courses.codepath.org/courses/android_university/unit/6#!exercises
             public boolean onQueryTextChange(String newText) {
-                ListAdapter.getFilter().filter(newText);
+                adapter.getFilter().filter(newText);
                 return false;
             }
         });
