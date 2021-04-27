@@ -36,7 +36,7 @@ import java.util.List;
 
 public class MyProfileFragment extends Fragment
 {
-    public static final String TAG = "MyListingsFragment";
+    public static final String TAG = "MyProfileFragment";
     private RecyclerView rvListings;
     protected ListAdapter adapter;
     protected List<Listings> allListings;
