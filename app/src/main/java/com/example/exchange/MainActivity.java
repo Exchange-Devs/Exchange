@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.example.exchange.fragments.ListingSearchFragment;
 import com.example.exchange.fragments.ListingsFragment;
 import com.example.exchange.fragments.MyProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -57,7 +58,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment fragment;
-                switch (menuItem.getItemId()) {
+                switch (menuItem.getItemId())
+                {
                     case R.id.action_home:
                         fragment = new ListingsFragment();
                         break;
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity
                         fragment = new ListingsFragment();
                         break;
                     case R.id.action_search:
-                        fragment = new ListingsFragment();
+                        fragment = new ListingSearchFragment();
                         break;
                     case R.id.action_profile:
                     default:
@@ -79,35 +81,6 @@ public class MainActivity extends AppCompatActivity
         // Set default selection
         bottomNavigation.setSelectedItemId(R.id.action_home);
     }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//    public boolean OnCreateOptionsMenu(Menu menu){
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.menu_bottom_navigation, menu);
-//
-//        MenuItem searchItem = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) searchItem.getActionView();
-//
-//        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-//
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            // https://courses.codepath.org/courses/android_university/unit/6#!exercises
-//            public boolean onQueryTextChange(String newText) {
-//                adapter.getFilter().filter(newText);
-//                return false;
-//            }
-//        });
-//        return super.onCreateOptionsMenu(menu);
-//    }
-
 
     @Override
     protected void onResume()
