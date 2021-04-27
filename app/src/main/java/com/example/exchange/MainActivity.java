@@ -2,10 +2,14 @@ package com.example.exchange;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -78,6 +82,35 @@ public class MainActivity extends AppCompatActivity
         // Set default selection
         bottomNavigation.setSelectedItemId(R.id.action_home);
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public boolean OnCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_bottom_navigation, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            // https://courses.codepath.org/courses/android_university/unit/6#!exercises
+            public boolean onQueryTextChange(String newText) {
+                ListAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
 
     @Override
     protected void onResume()
