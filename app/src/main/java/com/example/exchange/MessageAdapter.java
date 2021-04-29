@@ -12,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
 
 import java.math.BigInteger;
@@ -75,14 +77,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public void onBindViewHolder(MessageViewHolder holder, int position)
     {
         Message message = mMessages.get(position);
-        holder.bindMessage(message);
+        try {
+            holder.bindMessage(message);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean isMe(int position)
     {
         Message message = mMessages.get(position);
-        System.out.println( message.getUser().toString());
-        System.out.println( ParseUser.getCurrentUser().toString());
         return message.getUser() != null && message.getUser().getObjectId().equals(ParseUser.getCurrentUser().getObjectId());
     }
 
@@ -91,7 +95,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             super(itemView);
         }
 
-        abstract void bindMessage(Message message);
+        abstract void bindMessage(Message message) throws ParseException;
     }
 
         public class IncomingMessageViewHolder extends MessageViewHolder
@@ -109,22 +113,24 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             }
 
             @Override
-            public void bindMessage(Message message)
+            public void bindMessage(Message message) throws ParseException
             {
-                try {
+                ParseFile file =  message.getUser().fetchIfNeeded().getParseFile("profileImage");
+                if(file != null)
+                {
                     Glide.with(mContext)
-                            .load(message.getUser().fetchIfNeeded().getParseFile("profileImage").getUrl())
+                          .load(file.getUrl())
                             .circleCrop() // create an effect of a round profile picture
                             .into(imageOther);
-                } catch (ParseException e) {
-                    e.printStackTrace();
                 }
+                else
+                {
+                    Glide.with(mContext).load(R.drawable.profile_pic).circleCrop().into(imageOther);
+                }
+
                 body.setText(message.getBody());
-                try {
+
                     name.setText(message.getUser().fetchIfNeeded().getUsername());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
             }
         }
 
@@ -141,15 +147,19 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             }
 
             @Override
-            public void bindMessage(Message message)
+            public void bindMessage(Message message) throws ParseException
             {
-                try {
+                ParseFile file =  message.getUser().fetchIfNeeded().getParseFile("profileImage");
+                if(file != null)
+                {
                     Glide.with(mContext)
-                            .load(message.getUser().fetchIfNeeded().getParseFile("profileImage").getUrl())
+                            .load(file.getUrl())
                             .circleCrop() // create an effect of a round profile picture
                             .into(imageMe);
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                }
+                else
+                {
+                    Glide.with(mContext).load(R.drawable.profile_pic).circleCrop().into(imageMe);
                 }
                 body.setText(message.getBody());
             }

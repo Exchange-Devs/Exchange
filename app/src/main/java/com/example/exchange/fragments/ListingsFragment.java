@@ -65,6 +65,7 @@ public class ListingsFragment extends Fragment
         allListings = new ArrayList<>();
         adapter = new ListAdapter(getContext(), allListings);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        
         btnComposeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
