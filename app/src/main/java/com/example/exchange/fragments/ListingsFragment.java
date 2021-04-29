@@ -1,11 +1,13 @@
 package com.example.exchange.fragments;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,9 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.exchange.ComposeActivity;
 import com.example.exchange.ListAdapter;
 import com.example.exchange.Listings;
 import com.example.exchange.EndlessRecyclerViewScrollListener;
+import com.example.exchange.MainActivity;
 import com.example.exchange.R;
 
 import com.parse.FindCallback;
@@ -35,6 +39,7 @@ public class ListingsFragment extends Fragment
     protected List<Listings> allListings;
     private SwipeRefreshLayout swipeContainer;
     private EndlessRecyclerViewScrollListener endlessRecyclerViewScrollListener;
+    private ImageButton btnComposeBtn;
     int counter = 1;
 
 
@@ -56,9 +61,18 @@ public class ListingsFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
         rvListings = view.findViewById(R.id.rvListings);
         swipeContainer = view.findViewById(R.id.swipeContainer);
+        btnComposeBtn = view.findViewById(R.id.btnComposeBtn);
         allListings = new ArrayList<>();
         adapter = new ListAdapter(getContext(), allListings);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        btnComposeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ComposeActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
         endlessRecyclerViewScrollListener = new EndlessRecyclerViewScrollListener(gridLayoutManager)
         {
             @Override

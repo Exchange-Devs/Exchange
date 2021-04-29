@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.exchange.fragments.ListingSearchFragment;
 import com.example.exchange.fragments.ListingsFragment;
+import com.example.exchange.fragments.MessageFragment;
 import com.example.exchange.fragments.MyProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseFile;
@@ -29,9 +30,6 @@ public class MainActivity extends AppCompatActivity
     private BottomNavigationView bottomNavigation;
     private Toolbar toolbar;
     private ImageView ivProfileImage;
-    private ImageButton btnComposeBtn;
-//    protected ListAdapter adapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +38,6 @@ public class MainActivity extends AppCompatActivity
 
         toolbar = findViewById(R.id.toolbar);
         ivProfileImage = findViewById(R.id.ivProfileImage);
-        btnComposeBtn = findViewById(R.id.btnComposeBtn);
-
-        btnComposeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ComposeActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         loadImage();
 
@@ -64,7 +52,7 @@ public class MainActivity extends AppCompatActivity
                         fragment = new ListingsFragment();
                         break;
                     case R.id.action_message:
-                        fragment = new ListingsFragment();
+                        fragment = new MessageFragment();
                         break;
                     case R.id.action_search:
                         fragment = new ListingSearchFragment();

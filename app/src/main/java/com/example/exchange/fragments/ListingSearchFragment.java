@@ -28,17 +28,13 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListingSearchFragment extends Fragment {
-
-
-    public static final String TAG = "ListingsSearch";
+public class ListingSearchFragment extends Fragment
+{
+    public static final String TAG = "ListingsSearchFragment";
     private RecyclerView rvListings;
     protected ListAdapter adapter;
     protected List<Listings> allListings;
     private Toolbar toolbar;
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,8 +57,6 @@ public class ListingSearchFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         rvListings.setAdapter(adapter);
         rvListings.setLayoutManager(gridLayoutManager);
-
-
     }
 
     @Override
