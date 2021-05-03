@@ -1,10 +1,7 @@
 package com.example.exchange;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -15,8 +12,8 @@ import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.example.exchange.fragments.ListingSearchFragment;
 import com.example.exchange.fragments.ListingsFragment;
+import com.example.exchange.fragments.MapFragment;
 import com.example.exchange.fragments.MessageFragment;
 import com.example.exchange.fragments.MyProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,6 +28,7 @@ public class MainActivity extends AppCompatActivity
     private Toolbar toolbar;
     private ImageView ivProfileImage;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +36,7 @@ public class MainActivity extends AppCompatActivity
 
         toolbar = findViewById(R.id.toolbar);
         ivProfileImage = findViewById(R.id.ivProfileImage);
+
 
         loadImage();
 
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity
                         fragment = new MessageFragment();
                         break;
                     case R.id.action_search:
-                        fragment = new ListingSearchFragment();
+                        fragment = new MapFragment();
                         break;
                     case R.id.action_profile:
                     default:
@@ -68,6 +67,12 @@ public class MainActivity extends AppCompatActivity
         });
         // Set default selection
         bottomNavigation.setSelectedItemId(R.id.action_home);
+
+        Fragment fragment = new MapFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+//                .replace(R.id.frame_layout, fragment)
+                .commit();
     }
 
     @Override
@@ -89,4 +94,6 @@ public class MainActivity extends AppCompatActivity
             Glide.with(this).load(R.drawable.profile_pic).transform(new CircleCrop()).into(ivProfileImage);
         }
     }
+
+
 }
