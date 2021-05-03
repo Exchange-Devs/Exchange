@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = new MapFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-//                .replace(R.id.frame_layout, fragment)
+//              .replace(R.id.frame_layout, fragment)
                 .commit();
     }
 
