@@ -16,10 +16,10 @@
         android:layout_height="match_parent"
 
         app:cameraBearing="112.5"
-        app:cameraTargetLat="28.527383"
-        app:cameraTargetLng="-81.367578"
+        app:cameraTargetLat="40.7919692"
+        app:cameraTargetLng="-74.2979889"
         app:cameraTilt="30"
-        app:cameraZoom="13"
+        app:cameraZoom="12"
         app:mapType="normal"
         app:uiCompass="false"
         app:uiRotateGestures="true"

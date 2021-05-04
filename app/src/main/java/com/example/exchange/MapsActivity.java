@@ -47,8 +47,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
     }
 
-
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mapView = googleMap;
