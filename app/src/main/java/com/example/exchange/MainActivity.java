@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
                     case R.id.action_message:
                         fragment = new MessageFragment();
                         break;
-                    case R.id.action_search:
+                    case R.id.action_map:
                         fragment = new MapFragment();
                         break;
                     case R.id.action_profile:
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity
                         fragment = new MyProfileFragment();
                         break;
                 }
-               fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
