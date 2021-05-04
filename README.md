@@ -181,7 +181,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/Exchange-Devs/Exchange/blob/main/Exchange%232.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/Exchange-Devs/Exchange/blob/main/Exchange%233.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
