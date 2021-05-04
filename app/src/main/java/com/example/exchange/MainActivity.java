@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.exchange.fragments.ListingsFragment;
+//import com.example.exchange.fragments.MapFragment;
 import com.example.exchange.fragments.MapFragment;
 import com.example.exchange.fragments.MessageFragment;
 import com.example.exchange.fragments.MyProfileFragment;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity
                         fragment = new MyProfileFragment();
                         break;
                 }
-                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+               fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = new MapFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-//              .replace(R.id.frame_layout, fragment)
+                //.replace(R.id.frame_layout, fragment)
                 .commit();
     }
 
