@@ -33,7 +33,7 @@ Exchange will allow college students to post and look for items that other stude
 - [ ] User can view detailed view of listed item.
 - [x] User can view thier own listings.
 - [ ] User can request availability of materials.
-- [ ] User can create messages and communicate within the app.
+- [x] User can create messages and communicate within the app.
 - [ ] User can select college that they attend.
 - [ ] User can filter by location, radius, delivery method, item condition, date listed, and category.
 
@@ -180,6 +180,8 @@ Here's a walkthrough of implemented user stories:
 <img src='https://github.com/Exchange-Devs/Exchange/blob/main/Exchange%231.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <img src='https://github.com/Exchange-Devs/Exchange/blob/main/Exchange%232.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+<img src='https://github.com/Exchange-Devs/Exchange/blob/main/Exchange%233.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
