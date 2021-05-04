@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.MapFragment">
 
+
+
     <fragment
+        android:id="@+id/google_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/google_map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+        app:cameraBearing="112.5"
+        app:cameraTargetLat="28.527383"
+        app:cameraTargetLng="-81.367578"
+        app:cameraTilt="30"
+        app:cameraZoom="13"
+        app:mapType="normal"
+        app:uiCompass="false"
+        app:uiRotateGestures="true"
+        app:uiScrollGestures="true"
+        app:uiTiltGestures="true"
+        app:uiZoomControls="false"
+        app:uiZoomGestures="true"/>
 
 </RelativeLayout>
